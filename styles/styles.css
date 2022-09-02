@@ -4,6 +4,7 @@
   --secondary-theme-color: #f5f5f5;
   --hero-bg-color: #c4c4c4;
   --hero-overlay-color: rgba(47, 48, 58, 0.4);
+  --our-work-overlay-bg: rgba(47, 48, 58, 0.8);
   --footer-bg-color: #2f303a;
   --filter-button-bg-color: #f5f4fa;
   --main-text-color: #212121;
@@ -24,10 +25,15 @@
   --portfolio-card-shadow-color2: rgba(0, 0, 0, 0.8);
   --portfolio-card-shadow-color3: rgba(0, 0, 0, 0.12);
   --portfolio-card-border-color: #eeeeee;
+  --portfolio-overlay-color: rgba(33, 150, 243, 0.9);
 
   /* fonts */
   --primary-font: "roboto", sans-serif;
   --secondary-font: "raleway", sans-serif;
+
+  /* animations */
+  --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
 }
 
 /* styles reset */
@@ -150,7 +156,12 @@ body {
   color: var(--accent-color);
 }
 
+.nav-list-item {
+  position: relative;
+}
+
 .nav-link {
+  display: block;
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -159,6 +170,21 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--main-text-color);
+
+  transition: color var(--animation-duration) var(--animation-timing-function);
+}
+
+.current.nav-link::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  content: "";
+
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 
 .nav .nav-link:hover,
@@ -175,7 +201,7 @@ body {
   width: 16px;
   height: 12px;
   margin-right: 10px;
-  fill: currentColor;
+  --color: currentColor;
 }
 
 .icon-header.telephone {
@@ -195,12 +221,13 @@ body {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
+
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .header-contact-link:hover,
 .header-contact-link:focus {
   color: var(--accent-color);
-  fill: var(--accent-color);
 }
 
 /* =====================/header-styles===================== */
@@ -263,6 +290,9 @@ body {
   border: 0;
   box-shadow: 0px 4px 4px var(--button-shadow);
   border-radius: 4px;
+
+  transition: background-color var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .hero-button:hover,
@@ -329,6 +359,29 @@ body {
 .work-list-line {
   flex-basis: calc((100%-60px) / 3);
 }
+
+.work-list-wrap {
+  position: relative;
+}
+
+.our-wor-topic {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--main-theme-color);
+  background: var(--our-work-overlay-bg);
+}
 /* =================/our work - styles================ */
 
 /* =================our team - styles================ */
@@ -394,12 +447,17 @@ body {
   height: 44px;
   border-radius: 50%;
   background-color: var(--main-theme-color);
-  fill: var(--social-list-icon-fill);
+  color: var(--social-list-icon-fill);
+
+  transition: background-color var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .social-list-icon {
   width: 20px;
   height: 20px;
+  --color: currentColor;
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .social-list-link:hover,
@@ -409,7 +467,7 @@ body {
 
 .social-list-link:hover .social-list-icon,
 .social-list-link:focus .social-list-icon {
-  fill: var(--main-theme-color);
+  color: var(--main-theme-color);
 }
 /* =================/our team - styles================ */
 
@@ -430,12 +488,16 @@ body {
   width: 170px;
   height: 92px;
 
-  fill: var(--social-list-icon-fill);
+  color: var(--social-list-icon-fill);
+
+  transition: border var(--animation-duration) var(--animation-timing-function);
 }
 
 .clients-logo-icon {
   width: 106px;
   height: 60px;
+  --color: currentColor;
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .clients-link:hover,
@@ -445,7 +507,7 @@ body {
 
 .clients-link:hover .clients-logo-icon,
 .clients-link:focus .clients-logo-icon {
-  fill: var(--accent-color);
+  color: var(--accent-color);
 }
 
 /* =================/our clients - styles================ */
@@ -482,6 +544,7 @@ body {
   font-size: 14px;
   line-height: 1.71;
   color: var(--main-theme-color);
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .footer-contact {
@@ -489,6 +552,7 @@ body {
   font-size: 14px;
   line-height: 1.71;
   color: var(--footer-contact-color);
+  transition: color var(--animation-duration) var(--animation-timing-function);
 }
 
 .address-map:hover,
@@ -526,11 +590,14 @@ body {
   height: 44px;
   border-radius: 50%;
   background-color: var(--footer-social-link-color);
-  fill: var(--main-theme-color);
+  color: var(--main-theme-color);
+  transition: background-color var(--animation-duration)
+    var(--animation-timing-function);
 }
 .footer-social-icon {
   width: 20px;
   height: 20px;
+  --color: currentColor;
 }
 
 .footer-social-link:hover,
@@ -538,6 +605,71 @@ body {
   background-color: var(--accent-color);
 }
 /* =================/footer styles================ */
+
+/* =================modal styles================ */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  scale: 1;
+
+  transition: opacity var(--animation-duration) var(--animation-timing-function),
+    scale var(--animation-duration) var(--animation-timing-function);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+
+  background: var(--main-theme-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.close-modal-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 8px;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  color: var(--logo-header-color);
+}
+
+.modal-close-icon {
+  width: 18px;
+  height: 18px;
+  --color: currentColor;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+/* =================/modal styles================ */
 
 /* =================portfolio.html styles================ */
 
@@ -567,6 +699,10 @@ body {
 
   border: 0;
   border-radius: 4px;
+
+  transition: color var(--animation-duration) var(--animation-timing-function),
+    background-color var(--animation-duration) var(--animation-timing-function),
+    box-shadow var(--animation-duration) var(--animation-timing-function);
 }
 
 .portfolio-button:hover,
@@ -586,12 +722,47 @@ body {
 
 .project-link {
   display: inline-block;
+  transition: box-shadow var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .project-link:hover,
 .project-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.project-link-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-link:hover .project-link-overlay-text,
+.project-link:focus .project-link-overlay-text {
+  transform: translateY(0%);
+}
+
+.project-link-overlay-text {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  padding: 63px 24px;
+
+  width: 100%;
+  height: 100%;
+
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.55;
+  background-color: var(--portfolio-overlay-color);
+  color: var(--main-theme-color);
+
+  transform: translateY(100%);
+
+  transition: transform var(--animation-duration)
+    var(--animation-timing-function);
 }
 
 .item {

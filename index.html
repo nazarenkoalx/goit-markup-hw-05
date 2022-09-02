@@ -78,7 +78,9 @@
         <div class="container">
           <div class="hero-wrapper">
             <h1 class="hero-title">Ефективні рішення для вашого бізнесу</h1>
-            <button type="button" class="hero-button">Замовити послугу</button>
+            <button type="button" class="hero-button" data-modal-open>
+              Замовити послугу
+            </button>
           </div>
         </div>
       </section>
@@ -143,25 +145,34 @@
           <h2 class="section-title">Чим ми займаємося</h2>
           <ul class="work-list list">
             <li class="work-list-line">
-              <img
-                src="./images/main/wwd1.jpg"
-                alt="Фото чим ми займаємось 1"
-                width="370"
-              />
+              <div class="work-list-wrap">
+                <img
+                  src="./images/main/wwd1.jpg"
+                  alt="Фото чим ми займаємось 1"
+                  width="370"
+                />
+                <p class="our-wor-topic">Десктопні додатки</p>
+              </div>
             </li>
             <li class="work-list-line">
-              <img
-                src="./images/main/wwd2.jpg"
-                alt="Фото чим ми займаємось 2"
-                width="370"
-              />
+              <div class="work-list-wrap">
+                <img
+                  src="./images/main/wwd2.jpg"
+                  alt="Фото чим ми займаємось 2"
+                  width="370"
+                />
+                <p class="our-wor-topic">Мобільні додатки</p>
+              </div>
             </li>
             <li class="work-list-line">
-              <img
-                src="./images/main/wwd3.jpg"
-                alt="Фото чим ми займаємось 3"
-                width="370"
-              />
+              <div class="work-list-wrap">
+                <img
+                  src="./images/main/wwd3.jpg"
+                  alt="Фото чим ми займаємось 3"
+                  width="370"
+                />
+                <p class="our-wor-topic">Дизайнерські рішення</p>
+              </div>
             </li>
           </ul>
         </div>
@@ -559,5 +570,18 @@
         </div>
       </div>
     </footer>
+
+    <!--modals-->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button type="button" class="close-modal-btn" data-modal-close>
+          <svg class="modal-close-icon">
+            <use href="./images/sprite.svg#icon-close-btn"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!--scripts-->
+    <script src="./js/modal.js"></script>
   </body>
 </html>
