@@ -658,6 +658,11 @@ body {
   color: var(--logo-header-color);
 }
 
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+  color: var(--accent-color);
+}
+
 .modal-close-icon {
   width: 18px;
   height: 18px;
